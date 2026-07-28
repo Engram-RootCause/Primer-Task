@@ -32,7 +32,7 @@
   ul{max-width:900px}
   strong{color:var(--ink)}
   ul{margin:0 0 12px 20px}
-  li{margin-bottom:6px;color:var(--ink-2)}
+  li{margin-bottom:12px;color:var(--ink-2);line-height:1.45}
   li::marker{color:var(--accent)}
   .step{display:flex;gap:14px;margin-bottom:12px}
   .n{font-family:Inter,sans-serif;font-size:13px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
@@ -49,6 +49,17 @@
   .callout .clbl{font-family:Inter,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
   .callout p{font-size:15.5px}
   .ainote{font-family:Inter,sans-serif;font-size:14px;font-weight:600;color:var(--ink);background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:12px 18px;margin:0 0 24px}
+  .chips{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 18px;font-family:Inter,sans-serif}
+  .chip{font-size:11px;padding:5px 14px;border-radius:14px;border:1px solid}
+  .lvlrow{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center}
+  .lvl{background:var(--node);border:1.6px solid var(--blue);border-radius:10px;padding:9px 12px;text-align:center}
+  .lvl .ln{font-family:Inter,sans-serif;font-size:10px;color:var(--accent);letter-spacing:1px}
+  .lvl .lt{font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:var(--ink)}
+  .lvl .ls{font-family:Inter,sans-serif;font-size:10.5px;color:#a4a9b4}
+  .lvltxt{font-family:Inter,sans-serif;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+  .lvltxt .pf{color:var(--green);font-weight:600}
+  .lvltxt .ct{color:var(--red);font-weight:600}
+  .lvldn{width:200px;text-align:center;color:#6d7280;margin:2px 0;font-size:13px;font-family:Inter,sans-serif}
   .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0 4px;max-width:900px}
   .tile{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
   .tile.north{border-color:var(--accent);background:var(--accent-soft)}
@@ -71,83 +82,61 @@
 <div class="eq">healthy&nbsp; = &nbsp;maximize ( <b>order value</b> &nbsp;−&nbsp; <b>value lost</b> &nbsp;−&nbsp; <b>cost of capture</b> )
   <div class="eqns">north star metric: <b>value lost per $ presented</b></div>
 </div>
+<h3>The job</h3>
 <p>Order value is the payment stack's <strong>input</strong> — the stack cannot increase it, only deliver it. The stack's whole job:</p>
 <ul>
   <li><strong style="color:var(--green)">Performance</strong> — lose less order value through the funnel.</li>
   <li><strong style="color:var(--red)">Cost</strong> — charge less for the passage.</li>
 </ul>
 <div class="callout">
-  <div class="clbl">Note — solved elsewhere</div>
+  <div class="clbl">Out of segment insights</div>
   <p>Minimizing value lost is a <strong>pathing problem</strong>: many routes to the same destination, each with its own quality and price, changing by the minute. CDNs and telecoms solved it long ago.</p>
   <p style="margin-bottom:0">Both settled on the same rule: <strong>quality decides the route, price only breaks ties between routes that pass the quality bar.</strong></p>
+</div>
+
+<h3>Why it matters</h3>
+<ul>
+  <li><strong>The scale</strong> — every percentage point lost in the funnel is lost from the profit margin. Large clients feel it.</li>
+  <li><strong>It's invisible</strong> — value loss in this funnel doesn't arrive as an invoice or a cost line. It's an opportunity cost merchants never feel. Add multiple partners and geo coverage, and the problem compounds.</li>
+  <li><strong>On your own</strong> — as a merchant, you are on your own. As Primer, we have the data across segments to provide benchmarks.</li>
+</ul>
+<div class="callout">
+  <div class="clbl">Note — the decision is the cost</div>
+  <p style="margin-bottom:0">Partner health is as much about finding the best configuration as about <strong>who decides and implements the change</strong>. In large merchants that enablement is the biggest cost of the decision — lowering it is the point of orchestration.</p>
 </div>
 
 <h2>Approach</h2>
 
 <h3>Diagnosis</h3>
-<p><strong>Traceability</strong> — every transaction's path through the payment flow: which partners touched it, at every level, and what each level did to the end margin.</p>
+<p style="margin-bottom:20px"><strong>Traceability</strong> — every transaction's path through the payment flow: which partners touched it, at every level, and what each level did to the end margin. Primer's Observability already captures this per-transaction data sliced by dimension — the raw material is assumed to exist; traceability means connecting it per-path.</p>
 
-<figure>
-<div class="canvas">
-<svg viewBox="0 0 680 195" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6d7280"/></marker></defs>
-  <rect x="15" y="10" width="316" height="30" rx="15" fill="rgba(251,191,36,.10)" stroke="#fbbf24"/>
-  <text x="173" y="30" text-anchor="middle" font-size="7.6" fill="#fbbf24">Compliance gate: non-compliant routes don't exist</text>
-  <rect x="345" y="10" width="320" height="30" rx="15" fill="rgba(167,139,250,.10)" stroke="#a78bfa"/>
-  <text x="505" y="30" text-anchor="middle" font-size="7.6" fill="#a78bfa">Geo coverage: decides which options exist at each level</text>
-  <rect x="15" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="65" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L1</text>
-  <text x="65" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Checkout</text>
-  <text x="65" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">methods · UX</text>
-  <line x1="115" y1="115" x2="123" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
-  <rect x="125" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="175" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L2</text>
-  <text x="175" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">3DS auth</text>
-  <text x="175" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">challenge / exempt</text>
-  <line x1="225" y1="115" x2="233" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
-  <rect x="235" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="285" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L3</text>
-  <text x="285" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Fraud screen</text>
-  <text x="285" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">pass / block</text>
-  <line x1="335" y1="115" x2="343" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
-  <rect x="345" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="395" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L4</text>
-  <text x="395" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Routing</text>
-  <text x="395" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">pick the processor</text>
-  <line x1="445" y1="115" x2="453" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
-  <rect x="455" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="505" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L5</text>
-  <text x="505" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Processing</text>
-  <text x="505" y="137" text-anchor="middle" font-size="6.4" fill="#a4a9b4">acq → network → issuer</text>
-  <line x1="555" y1="115" x2="563" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
-  <rect x="565" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="615" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L6</text>
-  <text x="615" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Settlement</text>
-  <text x="615" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">payout · disputes</text>
-  <text x="340" y="180" text-anchor="middle" font-size="8.0" fill="#a4a9b4">At L1–L5 the merchant chooses between competing providers. Each choice performs and costs.</text>
-</svg>
+<div class="canvas" style="padding:18px 20px">
+<div class="chips">
+  <span class="chip" style="border-color:#fbbf24;color:#fbbf24;background:rgba(251,191,36,.10)">Compliance gate: non-compliant routes don't exist</span>
+  <span class="chip" style="border-color:#a78bfa;color:#a78bfa;background:rgba(167,139,250,.10)">Geo coverage: decides which options exist at each level</span>
 </div>
-</figure>
+<div class="lvlrow"><div class="lvl"><div class="ln">L1</div><div class="lt">Checkout</div><div class="ls">methods · UX</div></div>
+<div class="lvltxt"><span class="pf">Performance</span> — completion rate · checkout latency (p95) · method coverage &amp; fit per geo<br><span class="ct">Cost</span> — gateway fees · sales lost to slow or ill-fitting checkout</div></div>
+<div class="lvldn">↓</div>
+<div class="lvlrow"><div class="lvl"><div class="ln">L2</div><div class="lt">3DS auth</div><div class="ls">challenge / exempt</div></div>
+<div class="lvltxt"><span class="pf">Performance</span> — frictionless share · challenge success rate<br><span class="ct">Cost</span> — 3DS fees · sales lost to challenge drop-off</div></div>
+<div class="lvldn">↓</div>
+<div class="lvlrow"><div class="lvl"><div class="ln">L3</div><div class="lt">Fraud screen</div><div class="ls">pass / block</div></div>
+<div class="lvltxt"><span class="pf">Performance</span> — good orders passed (1 − false-decline rate) · fraud catch rate<br><span class="ct">Cost</span> — per-check fees · manual review cost · blocked good orders</div></div>
+<div class="lvldn">↓</div>
+<div class="lvlrow"><div class="lvl"><div class="ln">L4</div><div class="lt">Routing</div><div class="ls">pick the processor</div></div>
+<div class="lvltxt"><span class="pf">Performance</span> — share of traffic on the best-fit processor · retry recovery rate<br><span class="ct">Cost</span> — orchestration fees · wasted retries (scheme reattempt fees)</div></div>
+<div class="lvldn">↓</div>
+<div class="lvlrow"><div class="lvl"><div class="ln">L5</div><div class="lt">Processing</div><div class="ls">acq → network → issuer</div></div>
+<div class="lvltxt"><span class="pf">Performance</span> — auth rate on addressable attempts · uptime · latency<br><span class="ct">Cost</span> — MDR / interchange + markup · FX spread · downtime losses</div></div>
+<div class="lvldn">↓</div>
+<div class="lvlrow"><div class="lvl"><div class="ln">L6</div><div class="lt">Settlement</div><div class="ls">payout · disputes</div></div>
+<div class="lvltxt"><span class="pf">Performance</span> — settlement speed · dispute win rate<br><span class="ct">Cost</span> — chargebacks + fees + penalties · reconciliation effort</div></div>
+<p class="note" style="margin-top:16px">At L1–L5 the merchant chooses between competing providers — each choice performs and costs. Non-addressable failures (insufficient funds, customer error) belong to no level and no provider — excluded from every score.</p>
+</div>
 
-<table>
-  <tr><th>Level</th><th style="color:var(--green)">Performance → money in</th><th style="color:var(--red)">Cost → money out</th></tr>
-  <tr><td>L1 Checkout &amp; methods</td><td>Completion rate · checkout latency (p95) · method coverage &amp; fit per geo</td><td>Gateway fees · sales lost to slow or ill-fitting checkout</td></tr>
-  <tr><td>L2 3DS authentication</td><td>Frictionless share · challenge success rate</td><td>3DS fees · sales lost to challenge drop-off</td></tr>
-  <tr><td>L3 Fraud screening</td><td>Good orders passed (1 − false-decline rate) · fraud catch rate</td><td>Per-check fees · manual review cost · blocked good orders</td></tr>
-  <tr><td>L4 Routing</td><td>Share of traffic on the best-fit processor · retry recovery rate</td><td>Orchestration fees · wasted retries (scheme reattempt fees)</td></tr>
-  <tr><td>L5 Processing</td><td>Auth rate on addressable attempts · uptime · latency</td><td>MDR / interchange + markup · FX spread · downtime losses</td></tr>
-  <tr><td>L6 Settlement &amp; disputes</td><td>Settlement speed · dispute win rate</td><td>Chargebacks + fees + penalties · reconciliation effort</td></tr>
-</table>
-<p class="note">Non-addressable failures (insufficient funds, customer error) belong to no level and no provider — excluded from every score.</p>
-
-<ul style="margin-top:16px">
-  <li><strong>Sampled comparison:</strong> transaction windows scored against
-    <ul style="margin-top:6px">
-      <li>history vs the same moment</li>
-      <li>own data · industry segment · all of Primer's merchants</li>
-    </ul>
-  </li>
-</ul>
+<p style="margin:24px 0 20px"><strong>Cohorting</strong> — transactions grouped by behaviour through the funnel. Routing knowledge isn't just partner-by-partner — it's learning which kinds of transactions belong on which path.</p>
+<p style="margin-bottom:20px"><strong>Sampled comparison</strong> — transaction windows scored against history vs the same moment, on own data · industry segment · all of Primer's merchants.</p>
 
 <h3 style="margin-top:44px">Proposal — from score to decision</h3>
 <p>Each level offers the merchant competing options; every option gets a scorecard built from the performance and cost metrics above:</p>
@@ -184,9 +173,10 @@
 <figcaption>Detection &amp; attribution — scorecard every option at every level.</figcaption>
 </figure>
 
-<div class="step"><span class="n">1</span><p><strong>Knowledge.</strong> A dashboard with AI-powered summarization — per transaction, and per sample window across many transactions (cohort analysis). Powers manual investigation, and the humans using it validate the implementation itself.</p></div>
+<h3 style="margin-top:36px;padding-top:22px;border-top:1px solid var(--line)">Prioritization</h3>
+<div class="step"><span class="n">1</span><p><strong>Knowledge.</strong> Scores, traces, and cohort analysis fed into the AI Companion as data to power manual investigations — per transaction, and per sample window across many transactions. The humans investigating validate the implementation itself.</p></div>
 <div class="step"><span class="n">2</span><p><strong>Alerting.</strong> A notification system on top of step 1: score deviations trigger a short alert with the summary attached — getting ahead of incidents instead of finding them in the revenue numbers.</p></div>
-<div class="step"><span class="n">3</span><p><strong>Recommendation.</strong> AI learns from human decisions and starts proposing its own <strong>Change / Stay</strong> — a reinforcement cycle, benchmarked on predicted vs realized outcomes.</p></div>
+<div class="step"><span class="n">3</span><p><strong>Recommendation.</strong> AI learns from human decisions and starts proposing its own <strong>Change / Stay</strong> — a reinforcement cycle, benchmarked on predicted vs realized outcomes. This gets surfaced in the Workflows module as recommended workflows, rules and paths.</p></div>
 <div class="step"><span class="n">4</span><p><strong>Automation.</strong> Confirmation of the approach: unlocked per level as the model matches or beats a human operator's accuracy in less time.</p></div>
 
 <h2>Trade-offs</h2>
@@ -208,7 +198,7 @@
   <li><strong>Flapping</strong> — reacting fast enough to matter without oscillating traffic between providers.</li>
   <li><strong>Alert sensitivity</strong> — a low threshold catches small real dips but also fires on noise, and operators start ignoring alerts. A high threshold keeps every alert credible but lets slow erosion run unnoticed. Where the line sits is a decision, not a default.</li>
   <li><strong>Commercial commitments</strong> — volume deals with acquirers constrain what "optimal" is allowed to mean.</li>
-  <li><strong>Thin data</strong> — small merchants and narrow corridors can't support their own scorecards; they lean on segment and fleet scopes.</li>
+  <li><strong>Thin data</strong> — small merchants and narrow corridors can't support their own scorecards; they lean on segment and network scopes.</li>
   <li><strong>Gaming</strong> — once providers know they're scored, some will optimise the score rather than the outcome.</li>
 </ul>
 
@@ -239,19 +229,19 @@
 <h2>Assumptions and open questions</h2>
 <h3>Assumed</h3>
 <ul>
-  <li>Per-transaction traceability is capturable across all levels.</li>
-  <li>Fee data is complete enough to price cost of capture.</li>
-  <li>Cross-merchant data is usable within existing agreements.</li>
-  <li>Enough incident history exists to validate scoring before merchants see it.</li>
-  <li>Someone on the merchant side acts on the output.</li>
+  <li>We can follow each transaction through every level of the flow.</li>
+  <li>We know what every provider charges, well enough to calculate real costs.</li>
+  <li>We're allowed to use data from all merchants for comparisons.</li>
+  <li>We have enough past incidents to test the scoring against before showing it to anyone.</li>
+  <li>Merchants have someone who will actually read the alerts and act.</li>
 </ul>
 <h3>Open</h3>
 <ul>
-  <li>What defines a "similar merchant" for the segment benchmark.</li>
-  <li>Where the cutoff sits between partner-degraded and market-wide.</li>
-  <li>Do partners see their own scores.</li>
-  <li>Minimum volume before own-scope scoring is honest.</li>
-  <li>Packaging — included or premium.</li>
+  <li>When comparing a merchant to "similar merchants" — similar how? Industry, size, geography?</li>
+  <li>When everything dips at once, how do we tell "this partner has a problem" from "the whole market has a problem"?</li>
+  <li>Should partners see the scores we give them?</li>
+  <li>How small can a merchant be before their own data is too thin to score honestly?</li>
+  <li>Is this part of the product, or something merchants pay extra for?</li>
 </ul>
 
 <div class="foot">Catalin · Primer product task · 2026-07-28</div>
