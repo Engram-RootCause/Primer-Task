@@ -69,6 +69,26 @@
   .tile p{font-family:Inter,sans-serif;font-size:12.5px;color:var(--ink-3);margin:0;line-height:1.5}
   .tile p strong{color:var(--ink-2)}
   @media(max-width:700px){.tiles{grid-template-columns:1fr}}
+  .fold summary{cursor:pointer;font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:var(--accent);border:1px solid var(--line);border-radius:10px;padding:10px 16px;list-style:none;display:inline-block;margin:2px 0 10px;user-select:none}
+  .fold summary::-webkit-details-marker{display:none}
+  .fold summary::before{content:"\25B8  "}
+  .fold[open] summary::before{content:"\25BE  "}
+  .fold summary:hover{border-color:var(--accent)}
+  @page{size:A4;margin:0}
+  @media print{
+    html,body{background:#17181b !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body{font-size:13.5px}
+    .wrap{max-width:100%;padding:34px 36px 40px}
+    h1{font-size:27px}
+    h2{font-size:18px;break-after:avoid}
+    h3{break-after:avoid}
+    .canvas,.tile,.callout,.step,.lvlrow,.eq,.ainote{break-inside:avoid}
+    .tiles{break-inside:avoid}
+    li{break-inside:avoid}
+    .fold summary{display:none}
+    .fold{display:block}
+  }
 </style>
 </head>
 <body>
@@ -110,6 +130,8 @@
 <h3>Diagnosis</h3>
 <p style="margin-bottom:20px"><strong>Traceability</strong> — every transaction's path through the payment flow: which partners touched it, at every level, and what each level did to the end margin. Primer's Observability already captures this per-transaction data sliced by dimension — the raw material is assumed to exist; traceability means connecting it per-path.</p>
 
+<details class="fold">
+<summary>Show the payment flow — L1–L6 with each level's performance &amp; cost metrics</summary>
 <div class="canvas" style="padding:18px 20px">
 <div class="chips">
   <span class="chip" style="border-color:#fbbf24;color:#fbbf24;background:rgba(251,191,36,.10)">Compliance gate: non-compliant routes don't exist</span>
@@ -134,6 +156,7 @@
 <div class="lvltxt"><span class="pf">Performance</span> — settlement speed · dispute win rate<br><span class="ct">Cost</span> — chargebacks + fees + penalties · reconciliation effort</div></div>
 <p class="note" style="margin-top:16px">At L1–L5 the merchant chooses between competing providers — each choice performs and costs. Non-addressable failures (insufficient funds, customer error) belong to no level and no provider — excluded from every score.</p>
 </div>
+</details>
 
 <p style="margin:24px 0 20px"><strong>Cohorting</strong> — transactions grouped by behaviour through the funnel. Routing knowledge isn't just partner-by-partner — it's learning which kinds of transactions belong on which path.</p>
 <p style="margin-bottom:20px"><strong>Sampled comparison</strong> — transaction windows scored against history vs the same moment, on own data · industry segment · all of Primer's merchants.</p>
