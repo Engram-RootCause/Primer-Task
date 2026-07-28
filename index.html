@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Partner ecosystem health — brief</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700&family=Inter:wght@400;500;600;700&display=optional" rel="stylesheet">
 <style>
   :root{
     --bg:#17181b; --ink:#e9eaee; --ink-2:#aab0bb; --ink-3:#717784; --line:#2b2d33;
@@ -16,26 +17,31 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:Newsreader,Georgia,serif;font-size:17px;line-height:1.6}
-  .wrap{max-width:760px;margin:0 auto;padding:56px 28px 64px}
+  .wrap{max-width:1140px;margin:0 auto;padding:56px 28px 64px}
   .kicker{font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-  h1{font-size:34px;line-height:1.15;font-weight:700;letter-spacing:-.5px;margin-bottom:26px}
+  h1{font-size:34px;line-height:1.15;font-weight:700;letter-spacing:-.5px;margin:40px 0 26px;color:#2fd6c2}
   .eq{background:var(--accent-soft);border-radius:12px;padding:16px 22px;font-size:19px;color:var(--ink);margin-bottom:10px;text-align:center}
   .eq b{color:var(--accent);font-weight:700}
+  .eqns{font-family:Inter,sans-serif;font-size:12.5px;letter-spacing:.4px;color:var(--ink);margin-top:14px;text-transform:uppercase}
+  .eqns b{color:var(--ink);font-weight:700;text-transform:none;font-size:14px;letter-spacing:0}
   .sub{font-family:Inter,sans-serif;font-size:13px;color:var(--ink-3);text-align:center;margin-bottom:8px}
-  h2{font-size:22px;font-weight:700;margin:34px 0 10px}
-  h3{font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin:24px 0 8px}
-  p{margin-bottom:10px;color:var(--ink-2)}
+  h2{font-size:22px;font-weight:700;margin:34px 0 10px;padding-top:24px;border-top:1px solid var(--line)}
+  h2:first-of-type{border-top:none;padding-top:0;margin-top:28px}
+  h3{font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin:20px 0 6px}
+  p{margin-bottom:9px;color:var(--ink-2);max-width:900px}
+  ul{max-width:900px}
   strong{color:var(--ink)}
   ul{margin:0 0 12px 20px}
   li{margin-bottom:6px;color:var(--ink-2)}
   li::marker{color:var(--accent)}
   .step{display:flex;gap:14px;margin-bottom:12px}
   .n{font-family:Inter,sans-serif;font-size:13px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-  .canvas{background-color:var(--canvas);background-image:radial-gradient(var(--dot) 1.1px, transparent 1.1px);background-size:22px 22px;border:1px solid var(--line);border-radius:16px;padding:10px;margin:14px 0 6px;font-family:Inter,sans-serif}
-  figcaption{font-family:Inter,sans-serif;font-size:12.5px;color:var(--ink-3);margin:6px 0 18px}
-  table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:13.5px;font-family:Inter,sans-serif}
-  th{text-align:left;font-weight:600;padding:7px 10px;border-bottom:1px solid var(--line);font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-3)}
-  td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  .canvas{background-color:var(--canvas);background-image:radial-gradient(var(--dot) 1.1px, transparent 1.1px);background-size:22px 22px;border:1px solid var(--line);border-radius:16px;padding:8px;margin:10px 0 4px;font-family:Inter,sans-serif}
+  figcaption{font-family:Inter,sans-serif;font-size:12.5px;color:var(--ink-3);margin:4px 0 12px}
+  figure{margin:0}
+  table{width:100%;border-collapse:collapse;margin:8px 0 12px;font-size:13px;font-family:Inter,sans-serif}
+  th{text-align:left;font-weight:600;padding:6px 10px;border-bottom:1px solid var(--line);font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-3)}
+  td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2);line-height:1.45}
   td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
   .foot{font-family:Inter,sans-serif;font-size:12px;color:var(--ink-3);border-top:1px solid var(--line);margin-top:36px;padding-top:10px}
   .note{font-family:Inter,sans-serif;font-size:12.5px;color:var(--ink-3)}
@@ -43,6 +49,15 @@
   .callout .clbl{font-family:Inter,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
   .callout p{font-size:15.5px}
   .ainote{font-family:Inter,sans-serif;font-size:14px;font-weight:600;color:var(--ink);background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:12px 18px;margin:0 0 24px}
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0 4px;max-width:900px}
+  .tile{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .tile.north{border-color:var(--accent);background:var(--accent-soft)}
+  .tile .tl{font-family:Inter,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+  .tile.north .tl{color:var(--accent)}
+  .tile .tv{font-family:Inter,sans-serif;font-size:16px;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:8px}
+  .tile p{font-family:Inter,sans-serif;font-size:12.5px;color:var(--ink-3);margin:0;line-height:1.5}
+  .tile p strong{color:var(--ink-2)}
+  @media(max-width:700px){.tiles{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -53,7 +68,9 @@
 <h1>Managing partner health means knowing what healthy is.</h1>
 
 <h2>Problem framing</h2>
-<div class="eq">healthy&nbsp; = &nbsp;maximize ( <b>order value</b> &nbsp;−&nbsp; <b>value lost</b> &nbsp;−&nbsp; <b>cost of capture</b> )</div>
+<div class="eq">healthy&nbsp; = &nbsp;maximize ( <b>order value</b> &nbsp;−&nbsp; <b>value lost</b> &nbsp;−&nbsp; <b>cost of capture</b> )
+  <div class="eqns">north star metric: <b>value lost per $ presented</b></div>
+</div>
 <p>Order value is the payment stack's <strong>input</strong> — the stack cannot increase it, only deliver it. The stack's whole job:</p>
 <ul>
   <li><strong style="color:var(--green)">Performance</strong> — lose less order value through the funnel.</li>
@@ -61,62 +78,57 @@
 </ul>
 <div class="callout">
   <div class="clbl">Note — solved elsewhere</div>
-  <p>Minimizing value lost is a <strong>pathing problem</strong>: many possible routes to the same destination, each with its own quality and price, all changing by the minute. Other industries solved this long ago — content delivery networks steer traffic across competing vendors by measured performance, telecoms route calls the same way.</p>
+  <p>Minimizing value lost is a <strong>pathing problem</strong>: many routes to the same destination, each with its own quality and price, changing by the minute. CDNs and telecoms solved it long ago.</p>
   <p style="margin-bottom:0">Both settled on the same rule: <strong>quality decides the route, price only breaks ties between routes that pass the quality bar.</strong></p>
 </div>
 
 <h2>Approach</h2>
 
 <h3>Diagnosis</h3>
-<ul>
-  <li><strong>Traceability:</strong> every transaction's path through the payment flow — which partners touched it, at every level.</li>
-</ul>
+<p><strong>Traceability</strong> — every transaction's path through the payment flow: which partners touched it, at every level, and what each level did to the end margin.</p>
 
 <figure>
 <div class="canvas">
-<svg viewBox="0 0 680 250" width="100%" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 680 195" width="100%" xmlns="http://www.w3.org/2000/svg">
   <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6d7280"/></marker></defs>
   <rect x="15" y="10" width="316" height="30" rx="15" fill="rgba(251,191,36,.10)" stroke="#fbbf24"/>
-  <text x="173" y="30" text-anchor="middle" font-size="11.5" fill="#fbbf24">Compliance gate: non-compliant routes don't exist</text>
+  <text x="173" y="30" text-anchor="middle" font-size="7.6" fill="#fbbf24">Compliance gate: non-compliant routes don't exist</text>
   <rect x="345" y="10" width="320" height="30" rx="15" fill="rgba(167,139,250,.10)" stroke="#a78bfa"/>
-  <text x="505" y="30" text-anchor="middle" font-size="11.5" fill="#a78bfa">Geo coverage: decides which options exist at each level</text>
+  <text x="505" y="30" text-anchor="middle" font-size="7.6" fill="#a78bfa">Geo coverage: decides which options exist at each level</text>
   <rect x="15" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="65" y="102" text-anchor="middle" font-size="10.5" fill="#7da2f7">L1</text>
-  <text x="65" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#e9eaee">Checkout</text>
-  <text x="65" y="137" text-anchor="middle" font-size="10.5" fill="#a4a9b4">methods · UX</text>
+  <text x="65" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L1</text>
+  <text x="65" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Checkout</text>
+  <text x="65" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">methods · UX</text>
   <line x1="115" y1="115" x2="123" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
   <rect x="125" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="175" y="102" text-anchor="middle" font-size="10.5" fill="#7da2f7">L2</text>
-  <text x="175" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#e9eaee">3DS auth</text>
-  <text x="175" y="137" text-anchor="middle" font-size="10.5" fill="#a4a9b4">challenge / exempt</text>
+  <text x="175" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L2</text>
+  <text x="175" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">3DS auth</text>
+  <text x="175" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">challenge / exempt</text>
   <line x1="225" y1="115" x2="233" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
   <rect x="235" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="285" y="102" text-anchor="middle" font-size="10.5" fill="#7da2f7">L3</text>
-  <text x="285" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#e9eaee">Fraud screen</text>
-  <text x="285" y="137" text-anchor="middle" font-size="10.5" fill="#a4a9b4">pass / block</text>
+  <text x="285" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L3</text>
+  <text x="285" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Fraud screen</text>
+  <text x="285" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">pass / block</text>
   <line x1="335" y1="115" x2="343" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
   <rect x="345" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="395" y="102" text-anchor="middle" font-size="10.5" fill="#7da2f7">L4</text>
-  <text x="395" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#e9eaee">Routing</text>
-  <text x="395" y="137" text-anchor="middle" font-size="10.5" fill="#a4a9b4">pick the processor</text>
+  <text x="395" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L4</text>
+  <text x="395" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Routing</text>
+  <text x="395" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">pick the processor</text>
   <line x1="445" y1="115" x2="453" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
   <rect x="455" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="505" y="102" text-anchor="middle" font-size="10.5" fill="#7da2f7">L5</text>
-  <text x="505" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#e9eaee">Processing</text>
-  <text x="505" y="137" text-anchor="middle" font-size="9.5" fill="#a4a9b4">acq → network → issuer</text>
+  <text x="505" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L5</text>
+  <text x="505" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Processing</text>
+  <text x="505" y="137" text-anchor="middle" font-size="6.4" fill="#a4a9b4">acq → network → issuer</text>
   <line x1="555" y1="115" x2="563" y2="115" stroke="#6d7280" stroke-width="1.5" marker-end="url(#fl)"/>
   <rect x="565" y="80" width="100" height="70" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="615" y="102" text-anchor="middle" font-size="10.5" fill="#7da2f7">L6</text>
-  <text x="615" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#e9eaee">Settlement</text>
-  <text x="615" y="137" text-anchor="middle" font-size="10.5" fill="#a4a9b4">payout · disputes</text>
-  <text x="505" y="178" text-anchor="middle" font-size="11" fill="#6d7280">issuer decision is external — measured, not controlled</text>
-  <text x="340" y="220" text-anchor="middle" font-size="12.5" fill="#a4a9b4">At L1–L5 the merchant chooses between competing providers. Each choice performs and costs.</text>
+  <text x="615" y="102" text-anchor="middle" font-size="6.8" fill="#7da2f7">L6</text>
+  <text x="615" y="120" text-anchor="middle" font-size="7.6" font-weight="600" fill="#e9eaee">Settlement</text>
+  <text x="615" y="137" text-anchor="middle" font-size="6.8" fill="#a4a9b4">payout · disputes</text>
+  <text x="340" y="180" text-anchor="middle" font-size="8.0" fill="#a4a9b4">At L1–L5 the merchant chooses between competing providers. Each choice performs and costs.</text>
 </svg>
 </div>
-<figcaption>The payment flow — the levels of partnership a transaction traces through.</figcaption>
 </figure>
 
-<h3>What each level does to the end margin</h3>
 <table>
   <tr><th>Level</th><th style="color:var(--green)">Performance → money in</th><th style="color:var(--red)">Cost → money out</th></tr>
   <tr><td>L1 Checkout &amp; methods</td><td>Completion rate · checkout latency (p95) · method coverage &amp; fit per geo</td><td>Gateway fees · sales lost to slow or ill-fitting checkout</td></tr>
@@ -144,29 +156,29 @@
 <div class="canvas">
 <svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg">
   <defs><marker id="sc" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6d7280"/></marker></defs>
-  <text x="130" y="24" text-anchor="middle" font-size="13" font-weight="600" fill="#e9eaee">Payment levels</text>
-  <text x="330" y="24" text-anchor="middle" font-size="13" font-weight="600" fill="#e9eaee">Options (providers)</text>
+  <text x="130" y="24" text-anchor="middle" font-size="8.4" font-weight="600" fill="#e9eaee">Payment levels</text>
+  <text x="330" y="24" text-anchor="middle" font-size="8.4" font-weight="600" fill="#e9eaee">Options (providers)</text>
   <rect x="20" y="40" width="220" height="50" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="130" y="70" text-anchor="middle" font-size="12.5" fill="#c9d4e8">L1–L2 Checkout + 3DS</text>
+  <text x="130" y="70" text-anchor="middle" font-size="8.0" fill="#c9d4e8">L1–L2 Checkout + 3DS</text>
   <circle cx="290" cy="65" r="9" fill="#4a5060"/><circle cx="320" cy="65" r="9" fill="#4a5060"/>
   <rect x="20" y="100" width="220" height="50" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="130" y="130" text-anchor="middle" font-size="12.5" fill="#c9d4e8">L3 Fraud screening</text>
+  <text x="130" y="130" text-anchor="middle" font-size="8.0" fill="#c9d4e8">L3 Fraud screening</text>
   <circle cx="290" cy="125" r="9" fill="#4a5060"/><circle cx="320" cy="125" r="9" fill="#4a5060"/><circle cx="350" cy="125" r="9" fill="#4a5060"/>
   <rect x="20" y="160" width="220" height="50" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="130" y="190" text-anchor="middle" font-size="12.5" fill="#c9d4e8">L4–L5 Routing + processing</text>
+  <text x="130" y="190" text-anchor="middle" font-size="8.0" fill="#c9d4e8">L4–L5 Routing + processing</text>
   <circle cx="290" cy="185" r="9" fill="#4a5060"/><circle cx="320" cy="185" r="9" fill="#f87171"/><circle cx="350" cy="185" r="9" fill="#4a5060"/>
   <rect x="20" y="220" width="220" height="50" rx="10" fill="#1f2127" stroke="#60a5fa" stroke-width="1.6"/>
-  <text x="130" y="250" text-anchor="middle" font-size="12.5" fill="#c9d4e8">L6 Settlement + disputes</text>
+  <text x="130" y="250" text-anchor="middle" font-size="8.0" fill="#c9d4e8">L6 Settlement + disputes</text>
   <circle cx="290" cy="245" r="9" fill="#4a5060"/><circle cx="320" cy="245" r="9" fill="#4a5060"/>
   <line x1="335" y1="185" x2="418" y2="150" stroke="#6d7280" stroke-width="1.5" marker-end="url(#sc)"/>
   <rect x="425" y="60" width="235" height="180" rx="12" fill="rgba(167,139,250,.08)" stroke="#a78bfa" stroke-width="1.6"/>
-  <text x="542" y="86" text-anchor="middle" font-size="13.5" font-weight="600" fill="#c9b8f5">Scorecard per option</text>
-  <text x="440" y="114" font-size="12" fill="#b3a3e8">▸ vs itself — history, seasonal</text>
-  <text x="452" y="130" font-size="12" fill="#b3a3e8">baseline, same-moment windows</text>
-  <text x="440" y="154" font-size="12" fill="#b3a3e8">▸ vs peers — same level, compared</text>
-  <text x="452" y="170" font-size="12" fill="#b3a3e8">on like-for-like traffic</text>
-  <text x="440" y="194" font-size="12" fill="#b3a3e8">▸ vs all Primer merchants</text>
-  <text x="340" y="290" text-anchor="middle" font-size="12.5" fill="#a4a9b4">A dipping score (red) is the trigger — score only what the provider controls.</text>
+  <text x="542" y="86" text-anchor="middle" font-size="8.8" font-weight="600" fill="#c9b8f5">Scorecard per option</text>
+  <text x="440" y="114" font-size="7.6" fill="#b3a3e8">▸ vs itself — history, seasonal</text>
+  <text x="452" y="130" font-size="7.6" fill="#b3a3e8">baseline, same-moment windows</text>
+  <text x="440" y="154" font-size="7.6" fill="#b3a3e8">▸ vs peers — same level, compared</text>
+  <text x="452" y="170" font-size="7.6" fill="#b3a3e8">on like-for-like traffic</text>
+  <text x="440" y="194" font-size="7.6" fill="#b3a3e8">▸ vs all Primer merchants</text>
+  <text x="340" y="290" text-anchor="middle" font-size="8.0" fill="#a4a9b4">A dipping score (red) is the trigger — score only what the provider controls.</text>
 </svg>
 </div>
 <figcaption>Detection &amp; attribution — scorecard every option at every level.</figcaption>
@@ -180,13 +192,13 @@
 <h2>Trade-offs</h2>
 
 <h3>The main one: automation starves its own scorecards</h3>
-<p>Automation routes to preferred paths. Unused paths stop generating data, their scores go stale, and the system can no longer tell whether a rejected path has improved — it optimises into a local maximum and calls it healthy.</p>
+<p>Automation routes to preferred paths. Unused paths stop generating data, their scores go stale, and the system can't tell whether a rejected path improved — it optimises into a local maximum and calls it healthy.</p>
 <p>Four defences, cheapest first:</p>
 <ul>
-  <li><strong>Network data as free exploration.</strong> A path this merchant abandoned is still running live for the rest of the Primer merchant base. Their traffic keeps its score fresh at zero cost to this merchant — the network effect makes most exploration unnecessary.</li>
-  <li><strong>Confidence decays without traffic.</strong> A stale score isn't a good score. Decay turns silence into uncertainty, and uncertainty is what triggers the next two.</li>
-  <li><strong>An explore budget.</strong> A small, deliberate share of traffic on alternative paths — treated as a measurable cost of keeping options honest, and spent in low-value segments first.</li>
-  <li><strong>Probes where traffic can't go.</strong> Liveness and latency checks keep a dormant path's basic health observable without sending real money through it.</li>
+  <li><strong>Network data as free exploration.</strong> A path this merchant abandoned still runs live for other Primer merchants — their traffic keeps its score fresh at no cost here.</li>
+  <li><strong>Confidence decays without traffic.</strong> Silence becomes uncertainty, and uncertainty triggers the next two.</li>
+  <li><strong>An explore budget.</strong> A small deliberate share of traffic on alternatives — a measurable cost of keeping options honest, spent in low-value segments first.</li>
+  <li><strong>Probes where traffic can't go.</strong> Liveness and latency checks keep a dormant path observable without sending real money through it.</li>
 </ul>
 
 <h3>Other trade-offs</h3>
@@ -198,6 +210,48 @@
   <li><strong>Commercial commitments</strong> — volume deals with acquirers constrain what "optimal" is allowed to mean.</li>
   <li><strong>Thin data</strong> — small merchants and narrow corridors can't support their own scorecards; they lean on segment and fleet scopes.</li>
   <li><strong>Gaming</strong> — once providers know they're scored, some will optimise the score rather than the outcome.</li>
+</ul>
+
+<h2>Success metrics</h2>
+<div class="tiles">
+  <div class="tile north">
+    <div class="tl">North star</div>
+    <div class="tv">Value lost per $ presented</div>
+    <p>The formula's own term — proves the product worked, not just ran.</p>
+  </div>
+  <div class="tile">
+    <div class="tl">Customer</div>
+    <div class="tv">Satisfaction score</div>
+    <p>How much did this actually help you?</p>
+  </div>
+  <div class="tile">
+    <div class="tl">Quality</div>
+    <div class="tv">% false-flag warnings</div>
+    <p>Discarded by the human.</p>
+  </div>
+  <div class="tile">
+    <div class="tl">Speed</div>
+    <div class="tv">Time to decision — Change / Stay</div>
+    <p><strong>System side</strong> — sample windows needed to detect a trend.<br><strong>Merchant side</strong> — from warning to decision.</p>
+  </div>
+</div>
+
+<h2>Assumptions and open questions</h2>
+<h3>Assumed</h3>
+<ul>
+  <li>Per-transaction traceability is capturable across all levels.</li>
+  <li>Fee data is complete enough to price cost of capture.</li>
+  <li>Cross-merchant data is usable within existing agreements.</li>
+  <li>Enough incident history exists to validate scoring before merchants see it.</li>
+  <li>Someone on the merchant side acts on the output.</li>
+</ul>
+<h3>Open</h3>
+<ul>
+  <li>What defines a "similar merchant" for the segment benchmark.</li>
+  <li>Where the cutoff sits between partner-degraded and market-wide.</li>
+  <li>Do partners see their own scores.</li>
+  <li>Minimum volume before own-scope scoring is honest.</li>
+  <li>Packaging — included or premium.</li>
 </ul>
 
 <div class="foot">Catalin · Primer product task · 2026-07-28</div>
