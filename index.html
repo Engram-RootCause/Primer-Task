@@ -74,6 +74,9 @@
   .fold summary::before{content:"\25B8  "}
   .fold[open] summary::before{content:"\25BE  "}
   .fold summary:hover{border-color:var(--accent)}
+  .dlbtn{display:inline-block;font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:var(--ink);background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:10px 18px;text-decoration:none;margin:0 0 22px}
+  .dlbtn:hover{background:var(--accent);color:#17181b}
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
   @page{size:A4;margin:0}
   @media print{
     html,body{background:#17181b !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -87,6 +90,7 @@
     .tiles{break-inside:avoid}
     li{break-inside:avoid}
     .fold summary{display:none}
+    .dlbtn{display:none}
     .fold{display:block}
   }
 </style>
@@ -94,7 +98,10 @@
 <body>
 <div class="wrap">
 
-<div class="kicker">Partner ecosystem health · Primer task</div>
+<div class="topbar">
+  <div class="kicker" style="margin-bottom:0">Partner ecosystem health · Primer task</div>
+  <a class="dlbtn" style="margin:0" href="partner-health-brief.pdf" download>&#8595; Download as PDF</a>
+</div>
 <p class="ainote">This is an AI-enabled task reply. Please don't discard as AI slop.</p>
 <h1>Managing partner health means knowing what healthy is.</h1>
 
